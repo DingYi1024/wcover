@@ -45,6 +45,15 @@
 };
 
 const PALETTES = [
+  {id:'claude-ui', name:'Claude 暖白 UI', bg:'#F4EFE7', bg2:'#FBF7EF', text:'#2B241D', hl:'#C15F3F', sub:'#7C7066', sign:'#8E8175', tag:'#A86146', watermark:'#2B241D', pattern:'grid', patternOpacity:20},
+  {id:'ios-system', name:'iOS 系统浅色', bg:'#F2F2F7', bg2:'#FFFFFF', text:'#1C1C1E', hl:'#007AFF', sub:'#6E6E73', sign:'#8E8E93', tag:'#007AFF', watermark:'#007AFF', pattern:'grid', patternOpacity:12},
+  {id:'google-material', name:'谷歌四色极简', bg:'#FFFFFF', bg2:'#F8FAFD', text:'#202124', hl:'#4285F4', sub:'#5F6368', sign:'#34A853', tag:'#EA4335', watermark:'#4285F4', pattern:'google', patternOpacity:24},
+  {id:'wechat-green', name:'微信绿极简', bg:'#F5FBF7', bg2:'#FFFFFF', text:'#172019', hl:'#07C160', sub:'#6A7B70', sign:'#43895A', tag:'#07C160', watermark:'#07C160', pattern:'grid', patternOpacity:14},
+  {id:'douyin-neon', name:'抖音霓虹黑', bg:'#090A0F', bg2:'#11131A', text:'#F7F9FF', hl:'#00F2EA', sub:'#8D94A3', sign:'#FE2C55', tag:'#FE2C55', watermark:'#00F2EA', pattern:'grid', patternOpacity:28, highlightShadow:'0.035em 0.03em 0 #FE2C55'},
+  {id:'xiaohongshu-red', name:'小红书薯红', bg:'#FFF7F5', bg2:'#FFFFFF', text:'#2B1716', hl:'#FF2442', sub:'#8A6F6D', sign:'#B65B62', tag:'#FF2442', watermark:'#FF2442', pattern:'dots', patternOpacity:18},
+  {id:'pinduoduo-red', name:'拼多多热卖红', bg:'#FFF4EF', bg2:'#FFFFFF', text:'#2A1210', hl:'#E02E24', sub:'#8A625B', sign:'#C34731', tag:'#E02E24', watermark:'#E02E24', pattern:'dots', patternOpacity:22, highlightBg:'#E02E24', highlightText:'#FFFFFF', highlightRadius:'0.18em', highlightPadding:'0.02em 0.16em 0.07em', highlightShadow:'0 0.025em 0 rgba(255,255,255,0.32) inset'},
+  {id:'matrix-green', name:'黑客帝国代码雨', bg:'#020604', bg2:'#07110B', text:'#E5FFE9', hl:'#39FF7A', sub:'#77A885', sign:'#2EDB67', tag:'#39FF7A', watermark:'#39FF7A', pattern:'matrix', patternOpacity:34},
+  {id:'black-orange-logo', name:'Pornhub 黑橙标识', bg:'#060606', bg2:'#181818', text:'#F1ECE3', hl:'#F5A21A', sub:'#87827A', sign:'#B6A27D', tag:'#F5A21A', watermark:'#FFFFFF', pattern:'none', patternOpacity:0, highlightBg:'#F5A21A', highlightText:'#050505', highlightRadius:'0.12em', highlightPadding:'0.02em 0.15em 0.06em', highlightShadow:'0 0.025em 0 rgba(255,255,255,0.22) inset'},
   {id:'ink-green', name:'墨绿经典', bg:'#1C1C1C', bg2:'#252525', text:'#EDE6D8', hl:'#2D5F4A', sub:'#8A8A8A', sign:'#4A6B60', tag:'#8A8A8A', watermark:'#FFFFFF', pattern:'diagonal', patternOpacity:35},
   {id:'burgundy', name:'勃艮第酒红', bg:'#141414', bg2:'#1F1515', text:'#F0E8DA', hl:'#8B2635', sub:'#9A9A9A', sign:'#6B4A4E', tag:'#9A9A9A', watermark:'#FFFFFF', pattern:'noise', patternOpacity:40},
   {id:'midnight-navy', name:'极夜藏青', bg:'#0F1A2E', bg2:'#162138', text:'#F5F5F0', hl:'#E8833A', sub:'#7A8599', sign:'#9FAAB8', tag:'#7A8599', watermark:'#FFFFFF', pattern:'grid', patternOpacity:38},
@@ -62,10 +71,7 @@ const PALETTES = [
   {id:'ice-mint', name:'薄荷冰川', bg:'#E8EEE9', bg2:'#DEE5E0', text:'#1F2A24', hl:'#2E8B6F', sub:'#6B7A72', sign:'#8A9A92', tag:'#6B7A72', watermark:'#1F2A24', pattern:'grid', patternOpacity:38},
   {id:'sand-linen', name:'沙麻浅棕', bg:'#E6DDCF', bg2:'#DCD2C2', text:'#2B2519', hl:'#8B4513', sub:'#776F5E', sign:'#9A907E', tag:'#776F5E', watermark:'#2B2519', pattern:'noise', patternOpacity:36},
   {id:'newspaper', name:'老报纸灰', bg:'#D9D2C3', bg2:'#CFC7B6', text:'#1A1A1A', hl:'#9B2D20', sub:'#5F5A4D', sign:'#7E7868', tag:'#5F5A4D', watermark:'#1A1A1A', pattern:'noise', patternOpacity:38},
-  {id:'cyberpunk', name:'暗夜青蓝', bg:'#0E1419', bg2:'#161D24', text:'#EAEFF2', hl:'#00C2A8', sub:'#6B7A85', sign:'#8A99A5', tag:'#6B7A85', watermark:'#FFFFFF', pattern:'grid', patternOpacity:35},
-  {id:'black-orange-logo', name:'Pornhub 黑橙标识', bg:'#060606', bg2:'#181818', text:'#F1ECE3', hl:'#F5A21A', sub:'#87827A', sign:'#B6A27D', tag:'#F5A21A', watermark:'#FFFFFF', pattern:'none', patternOpacity:0, highlightBg:'#F5A21A', highlightText:'#050505', highlightRadius:'0.12em', highlightPadding:'0.02em 0.15em 0.06em', highlightShadow:'0 0.025em 0 rgba(255,255,255,0.22) inset'},
-  {id:'claude-ui', name:'Claude 暖白 UI', bg:'#F4EFE7', bg2:'#FBF7EF', text:'#2B241D', hl:'#C15F3F', sub:'#7C7066', sign:'#8E8175', tag:'#A86146', watermark:'#2B241D', pattern:'grid', patternOpacity:20},
-  {id:'matrix-green', name:'黑客帝国代码雨', bg:'#020604', bg2:'#07110B', text:'#E5FFE9', hl:'#39FF7A', sub:'#77A885', sign:'#2EDB67', tag:'#39FF7A', watermark:'#39FF7A', pattern:'matrix', patternOpacity:34}
+  {id:'cyberpunk', name:'暗夜青蓝', bg:'#0E1419', bg2:'#161D24', text:'#EAEFF2', hl:'#00C2A8', sub:'#6B7A85', sign:'#8A99A5', tag:'#6B7A85', watermark:'#FFFFFF', pattern:'grid', patternOpacity:35}
 ];
 
 // 高亮字体库（衬线 / 黑体 / 装饰）
@@ -149,7 +155,8 @@ function buildPattern(type, color, opacity){
       return `<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'>${rects}</svg>`;
     })(),
     crosshatch: `<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M0 40 L40 0 M-10 10 L10 -10 M30 50 L50 30' stroke='${c}' stroke-width='1.2' opacity='${o}'/><path d='M0 0 L40 40 M-10 30 L10 50 M30 -10 L50 10' stroke='${c}' stroke-width='1.2' opacity='${o}'/></svg>`,
-    matrix: `<svg xmlns='http://www.w3.org/2000/svg' width='180' height='360' viewBox='0 0 180 360'><rect width='180' height='360' fill='none'/><g font-family='monospace' font-size='14' font-weight='700' fill='${c}' opacity='${o}'><text x='8' y='22'>101</text><text x='8' y='52'>AI</text><text x='8' y='82'>011</text><text x='8' y='112'>42</text><text x='8' y='142'>SYS</text><text x='8' y='172'>010</text><text x='8' y='202'>RUN</text><text x='8' y='232'>01</text><text x='8' y='262'>110</text><text x='8' y='292'>END</text><text x='8' y='322'>001</text><text x='8' y='352'>GO</text><text x='58' y='8'>11</text><text x='58' y='38'>DATA</text><text x='58' y='68'>001</text><text x='58' y='98'>NET</text><text x='58' y='128'>10</text><text x='58' y='158'>CODE</text><text x='58' y='188'>01</text><text x='58' y='218'>AI</text><text x='58' y='248'>110</text><text x='58' y='278'>SYS</text><text x='58' y='308'>00</text><text x='58' y='338'>101</text><text x='118' y='26'>00</text><text x='118' y='56'>RUN</text><text x='118' y='86'>101</text><text x='118' y='116'>AI</text><text x='118' y='146'>11</text><text x='118' y='176'>DATA</text><text x='118' y='206'>010</text><text x='118' y='236'>SYS</text><text x='118' y='266'>01</text><text x='118' y='296'>NET</text><text x='118' y='326'>111</text><text x='118' y='356'>OK</text></g></svg>`
+    matrix: `<svg xmlns='http://www.w3.org/2000/svg' width='180' height='360' viewBox='0 0 180 360'><rect width='180' height='360' fill='none'/><g font-family='monospace' font-size='14' font-weight='700' fill='${c}' opacity='${o}'><text x='8' y='22'>101</text><text x='8' y='52'>AI</text><text x='8' y='82'>011</text><text x='8' y='112'>42</text><text x='8' y='142'>SYS</text><text x='8' y='172'>010</text><text x='8' y='202'>RUN</text><text x='8' y='232'>01</text><text x='8' y='262'>110</text><text x='8' y='292'>END</text><text x='8' y='322'>001</text><text x='8' y='352'>GO</text><text x='58' y='8'>11</text><text x='58' y='38'>DATA</text><text x='58' y='68'>001</text><text x='58' y='98'>NET</text><text x='58' y='128'>10</text><text x='58' y='158'>CODE</text><text x='58' y='188'>01</text><text x='58' y='218'>AI</text><text x='58' y='248'>110</text><text x='58' y='278'>SYS</text><text x='58' y='308'>00</text><text x='58' y='338'>101</text><text x='118' y='26'>00</text><text x='118' y='56'>RUN</text><text x='118' y='86'>101</text><text x='118' y='116'>AI</text><text x='118' y='146'>11</text><text x='118' y='176'>DATA</text><text x='118' y='206'>010</text><text x='118' y='236'>SYS</text><text x='118' y='266'>01</text><text x='118' y='296'>NET</text><text x='118' y='326'>111</text><text x='118' y='356'>OK</text></g></svg>`,
+    google: `<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'><rect width='96' height='96' fill='none'/><g opacity='${o}'><circle cx='12' cy='12' r='2.2' fill='#4285F4'/><circle cx='36' cy='12' r='2.2' fill='#EA4335'/><circle cx='60' cy='12' r='2.2' fill='#FBBC05'/><circle cx='84' cy='12' r='2.2' fill='#34A853'/><circle cx='24' cy='36' r='2.2' fill='#34A853'/><circle cx='48' cy='36' r='2.2' fill='#4285F4'/><circle cx='72' cy='36' r='2.2' fill='#EA4335'/><circle cx='12' cy='60' r='2.2' fill='#FBBC05'/><circle cx='36' cy='60' r='2.2' fill='#34A853'/><circle cx='60' cy='60' r='2.2' fill='#4285F4'/><circle cx='84' cy='60' r='2.2' fill='#EA4335'/><circle cx='24' cy='84' r='2.2' fill='#EA4335'/><circle cx='48' cy='84' r='2.2' fill='#FBBC05'/><circle cx='72' cy='84' r='2.2' fill='#34A853'/></g></svg>`
   };
   const svg = svgs[type];
   if(!svg) return '';
@@ -264,6 +271,7 @@ function render() {
     highlight.style.backgroundColor = highlightBg;
     highlight.style.borderRadius = highlightBg ? palette.highlightRadius || (xhsBlock ? "0.16em" : "0.08em") : "";
     highlight.style.padding = highlightBg ? palette.highlightPadding || (xhsBlock ? "0.02em 0.16em 0.07em" : "0 0.1em") : "";
+    highlight.style.textShadow = !highlightBg && palette.highlightShadow ? palette.highlightShadow : "";
     highlight.style.boxShadow = highlightBg ? palette.highlightShadow || "0 0.025em 0 rgba(255,255,255,0.2) inset" : "";
     highlight.style.display = highlightBg ? "inline-block" : "";
     highlight.style.lineHeight = highlightBg ? "0.98" : "";
@@ -344,7 +352,7 @@ function randomPalette() {
 }
 
 function randomBackground() {
-  const patterns = ["none", "dots", "grid", "diagonal", "noise", "crosshatch", "corners", "matrix"];
+  const patterns = ["none", "dots", "grid", "diagonal", "noise", "crosshatch", "corners", "matrix", "google"];
   const pattern = patterns[Math.floor(Math.random() * patterns.length)];
   const opacity = 25 + Math.floor(Math.random() * 35);
   document.getElementById("f-pattern").value = pattern;
