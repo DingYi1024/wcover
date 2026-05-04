@@ -308,7 +308,9 @@ function fitPreview() {
   const inner = document.getElementById("scale-inner");
   const cover = document.getElementById("cover");
   const size = COVER_SIZES[currentRatio];
-  const availableWidth = host.clientWidth - 2;
+  const hostStyle = window.getComputedStyle(host);
+  const horizontalPadding = parseFloat(hostStyle.paddingLeft) + parseFloat(hostStyle.paddingRight);
+  const availableWidth = Math.max(0, host.clientWidth - horizontalPadding);
   const scale = Math.min(availableWidth / size.width, 1);
   cover.style.transform = `scale(${scale})`;
   inner.style.width = `${size.width * scale}px`;
@@ -464,7 +466,8 @@ function downscalePng(dataUrl, width, height) {
   });
 }
 
-applyPalette("ink-green");
+paletteSelect.value = "claude-ui";
+applyPalette("claude-ui");
 render();
 setTimeout(fitPreview, 100);
 
