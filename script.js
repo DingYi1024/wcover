@@ -46,7 +46,9 @@
 
 const PALETTES = [
   {id:'claude-ui', name:'Claude 暖白 UI', bg:'#F4EFE7', bg2:'#FBF7EF', text:'#2B241D', hl:'#C15F3F', sub:'#7C7066', sign:'#8E8175', tag:'#A86146', watermark:'#2B241D', pattern:'grid', patternOpacity:20},
+  {id:'openai-minimal', name:'OpenAI 极简绿', bg:'#F7F7F2', bg2:'#FFFFFF', text:'#111111', hl:'#10A37F', sub:'#6B6F6A', sign:'#4E625B', tag:'#10A37F', watermark:'#111111', pattern:'grid', patternOpacity:16},
   {id:'ios-system', name:'iOS 系统浅色', bg:'#F2F2F7', bg2:'#FFFFFF', text:'#1C1C1E', hl:'#007AFF', sub:'#6E6E73', sign:'#8E8E93', tag:'#007AFF', watermark:'#007AFF', pattern:'grid', patternOpacity:12},
+  {id:'x-minimal', name:'X 极简黑白', bg:'#000000', bg2:'#111111', text:'#F5F5F5', hl:'#1D9BF0', sub:'#8B98A5', sign:'#D6D9DB', tag:'#1D9BF0', watermark:'#FFFFFF', pattern:'grid', patternOpacity:18},
   {id:'google-material', name:'谷歌四色极简', bg:'#FFFFFF', bg2:'#F8FAFD', text:'#202124', hl:'#4285F4', sub:'#5F6368', sign:'#34A853', tag:'#EA4335', watermark:'#4285F4', pattern:'google', patternOpacity:24},
   {id:'wechat-green', name:'微信绿极简', bg:'#F5FBF7', bg2:'#FFFFFF', text:'#172019', hl:'#07C160', sub:'#6A7B70', sign:'#43895A', tag:'#07C160', watermark:'#07C160', pattern:'grid', patternOpacity:14},
   {id:'douyin-neon', name:'抖音霓虹黑', bg:'#090A0F', bg2:'#11131A', text:'#F7F9FF', hl:'#00F2EA', sub:'#8D94A3', sign:'#FE2C55', tag:'#FE2C55', watermark:'#00F2EA', pattern:'grid', patternOpacity:28, highlightShadow:'0.035em 0.03em 0 #FE2C55'},
