@@ -13,6 +13,8 @@
   --ui-accent-strong: #a94f35;
   --ui-focus: rgba(201, 100, 66, 0.22);
   --ui-shadow: rgba(61, 45, 32, 0.08);
+  --font-sans: "Noto Sans SC", "Source Han Sans SC", "Source Han Sans CN", sans-serif;
+  --font-serif: "Noto Serif SC", "Source Han Serif SC", "Source Han Serif CN", serif;
 }
 
 * {
@@ -36,7 +38,7 @@ body {
     var(--ui-bg);
   background-size: auto, 36px 36px, 36px 36px, auto;
   color: var(--ui-text);
-  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.5;
 }
 
@@ -347,7 +349,7 @@ button.compact {
   height: 1064px;
   overflow: hidden;
   transform-origin: top left;
-  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  font-family: var(--font-serif);
 }
 
 #cover .bg-char {
@@ -355,7 +357,7 @@ button.compact {
   right: -120px;
   top: 50%;
   transform: translateY(-50%);
-  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  font-family: var(--font-serif);
   font-size: 1000px;
   font-weight: 900;
   letter-spacing: 0;
@@ -393,7 +395,7 @@ button.compact {
 
 #cover .tag {
   margin-bottom: 60px;
-  font-family: -apple-system, "Helvetica Neue", sans-serif;
+  font-family: var(--font-sans);
   font-size: 26px;
   font-weight: 400;
   letter-spacing: 0.5em;
@@ -402,14 +404,14 @@ button.compact {
 
 #cover .lead {
   margin-bottom: 30px;
-  font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  font-family: var(--font-sans);
   font-size: 58px;
   font-weight: 300;
   letter-spacing: 0.35em;
 }
 
 #cover .main {
-  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  font-family: var(--font-serif);
   font-size: 160px;
   font-weight: 900;
   letter-spacing: 0.02em;
@@ -422,7 +424,7 @@ button.compact {
 
 #cover .sign {
   margin-top: 80px;
-  font-family: -apple-system, "Helvetica Neue", sans-serif;
+  font-family: var(--font-sans);
   font-size: 38px;
   font-weight: 400;
   letter-spacing: 0.15em;
@@ -476,6 +478,77 @@ button.compact {
 #cover.thumb .sign .dot {
   margin: 0 18px;
   font-size: 22px;
+}
+
+#cover.xhs {
+  width: 2160px;
+  height: 2880px;
+}
+
+#cover.xhs .bg-char {
+  right: -310px;
+  top: 48%;
+  font-size: 1840px;
+  opacity: 0.042;
+}
+
+#cover.xhs .content {
+  padding: 0 250px;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+}
+
+#cover.xhs .tag {
+  align-self: flex-start;
+  max-width: 100%;
+  margin-bottom: 120px;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  padding: 18px 34px 17px;
+  font-family: var(--font-sans);
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: none;
+}
+
+#cover.xhs .lead {
+  order: 3;
+  max-width: 1520px;
+  margin-top: 92px;
+  margin-bottom: 0;
+  border-left: 10px solid currentColor;
+  padding-left: 36px;
+  font-family: var(--font-sans);
+  font-size: 72px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  line-height: 1.42;
+}
+
+#cover.xhs .main {
+  max-width: 1640px;
+  font-family: var(--font-sans);
+  font-size: 210px;
+  font-weight: 950;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+#cover.xhs .sign {
+  order: 4;
+  margin-top: 130px;
+  font-family: var(--font-sans);
+  font-size: 42px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+
+#cover.xhs .sign .dot {
+  margin: 0 20px;
+  font-size: 28px;
 }
 
 .palette-grid {

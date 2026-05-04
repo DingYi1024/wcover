@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light" />
-    <title>公众号封面图生成器 · WeChat Cover Generator</title>
+    <title>封面图生成器 · WeChat / Xiaohongshu Cover Generator</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
     <link rel="stylesheet" href="./styles.css" />
@@ -13,8 +13,8 @@
     <div class="wrap">
       <header class="topbar">
         <div>
-          <h1>公众号封面图生成器</h1>
-          <div class="sub">编辑栏目、标题和摘要，生成公众号首图 900×383 / 小图 200×200</div>
+          <h1>封面图生成器</h1>
+          <div class="sub">编辑栏目、标题和摘要，生成公众号首图 / 小图 / 小红书封面</div>
         </div>
         <button class="profile-link" type="button" onclick="exportPNG()">
           <span class="mark" aria-hidden="true">↓</span>
@@ -75,6 +75,7 @@
             <select id="f-ratio" name="ratio">
               <option value="main" selected>首图封面 900×383</option>
               <option value="thumb">次图小图 200×200</option>
+              <option value="xhs">小红书封面 1080×1440</option>
             </select>
           </div>
 
@@ -94,6 +95,7 @@
               <option value="noise">颗粒噪点</option>
               <option value="crosshatch">交叉斜线</option>
               <option value="corners">四角装饰线</option>
+              <option value="matrix">代码雨</option>
             </select>
             <div class="row opacity-row">
               <label for="f-pattern-opacity">强度</label>
@@ -102,12 +104,12 @@
           </div>
 
           <div class="field">
-            <label for="f-palette">视觉风格（20 套）</label>
+            <label for="f-palette">视觉风格（21 套）</label>
             <select id="f-palette" name="palette"></select>
             <div class="palette-grid" id="palette-grid"></div>
           </div>
 
-          <button type="button" onclick="exportPNG()">导出首图 PNG</button>
+          <button type="button" onclick="exportPNG()">导出当前 PNG</button>
           <div class="row button-row">
             <button class="sec" type="button" onclick="randomPalette()">随机风格</button>
             <button class="sec" type="button" onclick="randomBackground()">随机背景</button>

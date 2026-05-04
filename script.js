@@ -7,6 +7,7 @@
     exportLabel: "900×383",
     className: "",
     name: "首图",
+    summary: "公众号首图 900×383",
     defaultTitleSize: 160,
     minTitleSize: 112,
     maxTitleWidth: 2250,
@@ -20,10 +21,26 @@
     exportLabel: "200×200",
     className: "thumb",
     name: "小图",
+    summary: "公众号小图 200×200",
     defaultTitleSize: 170,
     minTitleSize: 110,
     maxTitleWidth: 820,
     maxTitleHeight: 410,
+  },
+  xhs: {
+    width: 2160,
+    height: 2880,
+    exportWidth: 1080,
+    exportHeight: 1440,
+    exportLabel: "1080×1440",
+    className: "xhs",
+    name: "小红书",
+    summary: "小红书封面 1080×1440",
+    defaultTitleSize: 210,
+    minTitleSize: 118,
+    maxTitleWidth: 1640,
+    maxTitleHeight: 900,
+    socialTone: "xhs",
   },
 };
 
@@ -47,22 +64,19 @@ const PALETTES = [
   {id:'newspaper', name:'老报纸灰', bg:'#D9D2C3', bg2:'#CFC7B6', text:'#1A1A1A', hl:'#9B2D20', sub:'#5F5A4D', sign:'#7E7868', tag:'#5F5A4D', watermark:'#1A1A1A', pattern:'noise', patternOpacity:38},
   {id:'cyberpunk', name:'暗夜青蓝', bg:'#0E1419', bg2:'#161D24', text:'#EAEFF2', hl:'#00C2A8', sub:'#6B7A85', sign:'#8A99A5', tag:'#6B7A85', watermark:'#FFFFFF', pattern:'grid', patternOpacity:35},
   {id:'black-orange-logo', name:'Pornhub 黑橙标识', bg:'#060606', bg2:'#181818', text:'#F1ECE3', hl:'#F5A21A', sub:'#87827A', sign:'#B6A27D', tag:'#F5A21A', watermark:'#FFFFFF', pattern:'none', patternOpacity:0, highlightBg:'#F5A21A', highlightText:'#050505', highlightRadius:'0.12em', highlightPadding:'0.02em 0.15em 0.06em', highlightShadow:'0 0.025em 0 rgba(255,255,255,0.22) inset'},
-  {id:'claude-ui', name:'Claude 暖白 UI', bg:'#F4EFE7', bg2:'#FBF7EF', text:'#2B241D', hl:'#C15F3F', sub:'#7C7066', sign:'#8E8175', tag:'#A86146', watermark:'#2B241D', pattern:'grid', patternOpacity:20}
+  {id:'claude-ui', name:'Claude 暖白 UI', bg:'#F4EFE7', bg2:'#FBF7EF', text:'#2B241D', hl:'#C15F3F', sub:'#7C7066', sign:'#8E8175', tag:'#A86146', watermark:'#2B241D', pattern:'grid', patternOpacity:20},
+  {id:'matrix-green', name:'黑客帝国代码雨', bg:'#020604', bg2:'#07110B', text:'#E5FFE9', hl:'#39FF7A', sub:'#77A885', sign:'#2EDB67', tag:'#39FF7A', watermark:'#39FF7A', pattern:'matrix', patternOpacity:34}
 ];
 
 // 高亮字体库（衬线 / 黑体 / 装饰）
 const FONTS = [
   { id: "auto", name: "跟随主标题", stack: "inherit", weight: "inherit" },
-  { id: "serif-sc", name: "思源宋体·重体", stack: '"Noto Serif SC","Source Han Serif SC","Songti SC",serif', weight: 900 },
-  { id: "songti", name: "宋体·粗", stack: '"Songti SC","STSong","SimSun",serif', weight: 900 },
-  { id: "fangsong", name: "仿宋", stack: '"STFangsong","FangSong",serif', weight: 700 },
-  { id: "kaiti", name: "楷体", stack: '"STKaiti","Kaiti SC","KaiTi",serif', weight: 700 },
-  { id: "yuanti", name: "圆体·粗", stack: '"PingFang SC","Yuanti SC","Hiragino Sans GB",sans-serif', weight: 900 },
-  { id: "pingfang", name: "苹方·极粗", stack: '"PingFang SC","Helvetica Neue",sans-serif', weight: 900 },
-  { id: "heiti", name: "黑体·粗", stack: '"Heiti SC","STHeiti","SimHei",sans-serif', weight: 900 },
-  { id: "lishu", name: "隶书", stack: '"STLiti","LiSu",serif', weight: 700 },
-  { id: "xingkai", name: "行楷·手写", stack: '"STXingkai","HanziPen SC",cursive', weight: 700 },
-  { id: "serif-italic", name: "衬线斜体", stack: '"Noto Serif SC","Songti SC",serif', weight: 900, italic: true },
+  { id: "noto-serif", name: "Noto Serif SC·重体", stack: '"Noto Serif SC","Source Han Serif SC","Source Han Serif CN",serif', weight: 900 },
+  { id: "source-serif", name: "思源宋体·重体", stack: '"Source Han Serif SC","Source Han Serif CN","Noto Serif SC",serif', weight: 900 },
+  { id: "noto-sans", name: "Noto Sans SC·黑体", stack: '"Noto Sans SC","Source Han Sans SC","Source Han Sans CN",sans-serif', weight: 900 },
+  { id: "source-sans", name: "思源黑体·粗体", stack: '"Source Han Sans SC","Source Han Sans CN","Noto Sans SC",sans-serif', weight: 900 },
+  { id: "lxgw-wenkai", name: "霞鹜文楷", stack: '"LXGW WenKai","LXGW WenKai SC","Noto Serif SC",serif', weight: 700 },
+  { id: "serif-italic", name: "Noto Serif SC·斜体", stack: '"Noto Serif SC","Source Han Serif SC","Source Han Serif CN",serif', weight: 900, italic: true },
 ];
 
 let currentPalette = PALETTES[0];
@@ -112,7 +126,7 @@ ratioSelect.addEventListener("change", (event) => {
       ? (button.querySelector("span:last-child").textContent = `导出${size.name}封面`)
       : (button.textContent = `导出${size.name} PNG`);
   });
-  document.querySelector(".sub").textContent = `编辑栏目、标题和摘要，生成 ${size.exportLabel} 公众号${size.name}封面`;
+  document.querySelector(".sub").textContent = `编辑栏目、标题和摘要，生成 ${size.summary}`;
   render();
 });
 
@@ -134,7 +148,8 @@ function buildPattern(type, color, opacity){
       for(let i=0;i<seed.length;i++){const x=(seed[i]*7)%100;const y=(seed[i]*13+i*9)%100;const s=1+seed[i]%2;rects+=`<rect x='${x}' y='${y}' width='${s}' height='${s}' fill='${c}' opacity='${o}'/>`;}
       return `<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'>${rects}</svg>`;
     })(),
-    crosshatch: `<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M0 40 L40 0 M-10 10 L10 -10 M30 50 L50 30' stroke='${c}' stroke-width='1.2' opacity='${o}'/><path d='M0 0 L40 40 M-10 30 L10 50 M30 -10 L50 10' stroke='${c}' stroke-width='1.2' opacity='${o}'/></svg>`
+    crosshatch: `<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M0 40 L40 0 M-10 10 L10 -10 M30 50 L50 30' stroke='${c}' stroke-width='1.2' opacity='${o}'/><path d='M0 0 L40 40 M-10 30 L10 50 M30 -10 L50 10' stroke='${c}' stroke-width='1.2' opacity='${o}'/></svg>`,
+    matrix: `<svg xmlns='http://www.w3.org/2000/svg' width='180' height='360' viewBox='0 0 180 360'><rect width='180' height='360' fill='none'/><g font-family='monospace' font-size='14' font-weight='700' fill='${c}' opacity='${o}'><text x='8' y='22'>101</text><text x='8' y='52'>AI</text><text x='8' y='82'>011</text><text x='8' y='112'>42</text><text x='8' y='142'>SYS</text><text x='8' y='172'>010</text><text x='8' y='202'>RUN</text><text x='8' y='232'>01</text><text x='8' y='262'>110</text><text x='8' y='292'>END</text><text x='8' y='322'>001</text><text x='8' y='352'>GO</text><text x='58' y='8'>11</text><text x='58' y='38'>DATA</text><text x='58' y='68'>001</text><text x='58' y='98'>NET</text><text x='58' y='128'>10</text><text x='58' y='158'>CODE</text><text x='58' y='188'>01</text><text x='58' y='218'>AI</text><text x='58' y='248'>110</text><text x='58' y='278'>SYS</text><text x='58' y='308'>00</text><text x='58' y='338'>101</text><text x='118' y='26'>00</text><text x='118' y='56'>RUN</text><text x='118' y='86'>101</text><text x='118' y='116'>AI</text><text x='118' y='146'>11</text><text x='118' y='176'>DATA</text><text x='118' y='206'>010</text><text x='118' y='236'>SYS</text><text x='118' y='266'>01</text><text x='118' y='296'>NET</text><text x='118' y='326'>111</text><text x='118' y='356'>OK</text></g></svg>`
   };
   const svg = svgs[type];
   if(!svg) return '';
@@ -243,14 +258,16 @@ function render() {
       highlight.style.fontStyle = font.italic ? "italic" : "normal";
     }
     highlight.style.backgroundImage = "none";
-    highlight.style.color = palette.highlightText || palette.hl;
-    highlight.style.backgroundColor = palette.highlightBg || "";
-    highlight.style.borderRadius = palette.highlightBg ? palette.highlightRadius || "0.08em" : "";
-    highlight.style.padding = palette.highlightBg ? palette.highlightPadding || "0 0.1em" : "";
-    highlight.style.boxShadow = palette.highlightBg ? palette.highlightShadow || "none" : "";
-    highlight.style.display = palette.highlightBg ? "inline-block" : "";
-    highlight.style.lineHeight = palette.highlightBg ? "0.98" : "";
-    highlight.style.margin = palette.highlightBg ? "0 0.03em" : "";
+    const xhsBlock = size.socialTone === "xhs" && !palette.highlightBg;
+    const highlightBg = palette.highlightBg || (xhsBlock ? palette.hl : "");
+    highlight.style.color = palette.highlightText || (xhsBlock ? palette.bg : palette.hl);
+    highlight.style.backgroundColor = highlightBg;
+    highlight.style.borderRadius = highlightBg ? palette.highlightRadius || (xhsBlock ? "0.16em" : "0.08em") : "";
+    highlight.style.padding = highlightBg ? palette.highlightPadding || (xhsBlock ? "0.02em 0.16em 0.07em" : "0 0.1em") : "";
+    highlight.style.boxShadow = highlightBg ? palette.highlightShadow || "0 0.025em 0 rgba(255,255,255,0.2) inset" : "";
+    highlight.style.display = highlightBg ? "inline-block" : "";
+    highlight.style.lineHeight = highlightBg ? "0.98" : "";
+    highlight.style.margin = highlightBg ? "0 0.035em" : "";
   });
   fitTitle(mainEl, size, Number(titleSize));
 
@@ -327,7 +344,7 @@ function randomPalette() {
 }
 
 function randomBackground() {
-  const patterns = ["none", "dots", "grid", "diagonal", "noise", "crosshatch", "corners"];
+  const patterns = ["none", "dots", "grid", "diagonal", "noise", "crosshatch", "corners", "matrix"];
   const pattern = patterns[Math.floor(Math.random() * patterns.length)];
   const opacity = 25 + Math.floor(Math.random() * 35);
   document.getElementById("f-pattern").value = pattern;
@@ -431,7 +448,8 @@ async function exportPNG() {
     const mainText = document.getElementById("f-main").value.replace(/`/g, "").replace(/[\\/:*?"<>|]/g, "_").slice(0, 20);
     const link = document.createElement("a");
     link.href = dataUrl;
-    link.download = `wechat_cover_${COVER_SIZES[currentRatio].name}_${mainText}_${currentPalette.id}.png`;
+    const exportPrefix = currentRatio === "xhs" ? "xiaohongshu_cover" : "wechat_cover";
+    link.download = `${exportPrefix}_${COVER_SIZES[currentRatio].name}_${mainText}_${currentPalette.id}.png`;
     link.click();
   } catch (error) {
     alert(`导出失败：${error.message}`);
