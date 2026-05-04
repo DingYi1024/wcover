@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>公众号封面图生成器 · WeChat Cover Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="topbar">
+        <div>
+          <h1>公众号封面图生成器</h1>
+          <div class="sub">编辑栏目、标题和摘要，生成公众号首图 900×383 / 小图 200×200</div>
+        </div>
+        <button class="profile-link" type="button" onclick="exportPNG()">
+          <span class="mark">↓</span>
+          <span>导出当前封面</span>
+        </button>
+      </div>
+
+      <div class="layout">
+        <div class="panel">
+          <div class="panel-title">内容设置</div>
+
+          <div class="field">
+            <label for="f-tag">栏目 / 话题</label>
+            <input id="f-tag" value="AI 工具方法论" />
+          </div>
+
+          <div class="field">
+            <label for="f-lead">封面摘要 / 引导句</label>
+            <input id="f-lead" value="一套适合知识型公众号的封面生成工作流" />
+          </div>
+
+          <div class="field">
+            <label for="f-main">主标题</label>
+            <input id="f-main" value="如何用`AI`做出高级封面？" />
+            <div class="hint">用 `` 包裹需要强调的词，例：普通文章如何做出`爆款封面`？</div>
+            <div class="row tight-row">
+              <button class="sec compact" type="button" onclick="randomHighlight()">随机高亮</button>
+              <button class="sec compact" type="button" onclick="clearHighlight()">清除高亮</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-watermark">背景水印字</label>
+            <input id="f-watermark" value="" maxlength="3" placeholder="留空则使用高亮字首字" />
+            <div class="row tight-row">
+              <button class="sec compact" type="button" onclick="randomWatermark()">随机水印</button>
+              <button class="sec compact" type="button" onclick="clearWatermark()">跟随标题</button>
+            </div>
+            <div class="hint">留空：自动用高亮字第一个字；随机：从标题汉字中抽 1 个</div>
+          </div>
+
+          <div class="field">
+            <label for="f-sign">账号名 / 署名</label>
+            <input id="f-sign" value="榴叔包子铺 · 原创内容 · 2026" />
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">样式设置</div>
+
+          <div class="field">
+            <label for="f-size">主字号</label>
+            <input id="f-size" type="number" value="160" min="80" max="260" />
+          </div>
+
+          <div class="field">
+            <label for="f-ratio">封面尺寸</label>
+            <select id="f-ratio">
+              <option value="main" selected>首图封面 900×383</option>
+              <option value="thumb">次图小图 200×200</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="f-hl-font">高亮文字字体</label>
+            <select id="f-hl-font"></select>
+          </div>
+
+          <div class="field">
+            <label for="f-pattern">背景纹理</label>
+            <select id="f-pattern">
+              <option value="auto" selected>自动匹配（跟随配色）</option>
+              <option value="none">无</option>
+              <option value="dots">细点网格</option>
+              <option value="grid">极细线网格</option>
+              <option value="diagonal">对角细线</option>
+              <option value="noise">颗粒噪点</option>
+              <option value="crosshatch">交叉斜线</option>
+              <option value="corners">四角装饰线</option>
+            </select>
+            <div class="row opacity-row">
+              <label for="f-pattern-opacity">强度</label>
+              <input id="f-pattern-opacity" type="range" min="0" max="100" value="25" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-palette">视觉风格（20 套）</label>
+            <select id="f-palette"></select>
+            <div class="palette-grid" id="palette-grid"></div>
+          </div>
+
+          <button type="button" onclick="exportPNG()">导出首图 PNG</button>
+          <div class="row button-row">
+            <button class="sec" type="button" onclick="randomPalette()">随机风格</button>
+            <button class="sec" type="button" onclick="randomBackground()">随机背景</button>
+          </div>
+        </div>
+
+        <div class="preview-wrap">
+          <div class="panel-title">效果预览</div>
+          <div class="preview-meta">
+            <span>预览 · <span id="scale-label">100%</span></span>
+            <span id="palette-name">墨绿经典</span>
+          </div>
+          <div class="scale-host">
+            <div class="scale-inner" id="scale-inner">
+              <div id="cover">
+                <div class="bg-grad"></div>
+                <div class="bg-pattern" id="c-pattern"></div>
+                <div class="bg-char" id="c-watermark">封</div>
+                <div class="content">
+                  <div class="tag" id="c-tag">AI 工具方法论</div>
+                  <div class="lead" id="c-lead">一套适合知识型公众号的封面生成工作流</div>
+                  <div class="main" id="c-main">如何用<span class="hl">AI</span>做出高级封面？</div>
+                  <div class="sign" id="c-sign">榴叔包子铺<span class="dot">·</span>原创内容<span class="dot">·</span>2026</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
